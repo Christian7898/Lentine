@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; // Aggiunto getDocs
+import { getFirestore, collection, addDoc, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; // Aggiunto getDocs
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -55,15 +55,18 @@ async function registraLentineUsate() {
 
     const dateToSave = inputDate ? new Date(inputDate) : new Date();
 
-    const docRef = await addDoc(collection(db, "Lentine"), {
+    const idDocument = dateToSave.toISOString().split("T")[0];
+
+
+    const docRef = await setDoc(doc(db, "Lentine", idDocument), {
       dataUtilizzati: dateToSave,
       tipoLenti: inputLensType,
       oreUtilizzo: isNaN(inputHours) ? 0 : inputHours,
       dataCreazioneRecord: new Date()
     });
 
-    console.log("Documento scritto con ID: ", docRef.id);
-    alert(`Utilizzo lentine aggiunto al db con id: ${docRef.id}`);
+    console.log("Documento scritto con ID: ", idDocument);
+    alert(`Utilizzo lentine aggiunto al db con id: ${idDocument}`);
 
     // Aggiorna il contatore dopo aver aggiunto un nuovo documento
     const updatedCount = await getDocumentCount("Lentine");
