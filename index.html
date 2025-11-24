@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lentine by Christian</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -24,7 +26,7 @@
         <form>
             <div class="form-group">
                 <label for="date">Data di Utilizzo</label>
-                <input type="date" id="date" name="date" required>
+                <input type="date" id="date" name="date" />
             </div>
 
             <div class="form-group">
@@ -36,17 +38,29 @@
 
             <div class="form-group">
                 <label for="hours">Ore di Utilizzo</label>
-                <input type="number" id="hours" name="hours" placeholder="Es: 8" required>
+                <input type="number" id="hours" name="hours" placeholder="Es: 8" />
             </div>
 
-            <button type="submit" class="button" id="addbtn">Aggiungi Giorno</button>
+            <div class="button-row">
+                <button type="submit" class="button" id="addbtn">Aggiungi Giorno</button>
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="showDay"
+                    onclick="window.location.href='day.html'">
+                    Mostra giorni
+                </button>
+            </div>
         </form>
 
         <div class="info-box">
-            <p><strong>Promemoria:</strong> Le lenti a contatto mensili dovrebbero essere sostituite ogni 30 giorni. Ricorda di pulirle ogni sera e di non indossarle mentre dormi.</p>
+            <p><strong>Promemoria:</strong> Le lenti a contatto mensili dovrebbero essere sostituite ogni 30 giorni.
+                Ricorda di pulirle ogni sera e di non indossarle mentre dormi.</p>
         </div>
     </div>
 
     <script type="module" src="script.js"></script>
 </body>
+
 </html>
