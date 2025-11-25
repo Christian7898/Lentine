@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs, deleteDoc, doc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDiDYvcCFMtkCTZGVRWuAkr8OSgXn4dCtI",
@@ -23,7 +23,7 @@ function formatItalian(date, id) {
   return `${formatted} (ID: ${id})`;
 }
 
-async function deleteRecord(id){
+async function deleteRecord(id) {
   await deleteDoc(doc(db, "Lentine", id));
   console.log("ELIMINATO ", id);
 }
@@ -61,19 +61,27 @@ async function loadDays() {
     // prende l’ultimo elemento inserito
     const card = list.lastElementChild;
     const btnDel = document.getElementById('btnDelate');
+    var selected = '';
     card.addEventListener("click", () => {
-      
-      btnDel.style.display = 'initial';
-      btnDel.textContent = 'Elimina giorno ' +docu.id;
-      console.log("Hai cliccato:", docu.id);   
-      btnDel.addEventListener("click", () =>{
+      if (selected !== docu.id) {
+        selected = docu.id;
+        btnDel.style.display = 'initial';
+        btnDel.textContent = 'Elimina giorno ' + docu.id;
+      }else{
+        selected = null;
+        btnDel.style.display = 'none';
+      }
+      console.log("Hai cliccato:", docu.id);
+
+      btnDel.addEventListener("click", () => {
+
         deleteRecord(docu.id);
 
-        setTimeout(function(){
+        setTimeout(function () {
           location.reload();
         }, 2000);
 
-      });   
+      });
     });
 
     count++;
