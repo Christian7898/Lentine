@@ -165,6 +165,14 @@ body {
       box-shadow: none;
     }
 
+    .btnDelate{
+      display: none;
+      background: rgb(246, 0, 0);
+      color: #ffffff;
+      border: 2px solid #667eea;
+      box-shadow: none;
+    }
+
     .secondary-button:hover {
       background: #eef2ff;
       box-shadow: 0 8px 16px rgba(129, 140, 248, 0.25);
